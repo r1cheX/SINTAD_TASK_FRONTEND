@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>
+	{{ data.type === "add" ? "Agregar" : "Editar" }} Movimiento
+</h2>
+<div class="container_form_modal container_body_form" [formGroup]="form">
+	<mat-form-field appearance="outline">
+		<mat-label>Código:</mat-label>
+		<input formControlName="codigo" matInput type="text" placeholder="Ruta" />
+	</mat-form-field>
+
+    <mat-form-field appearance="outline">
+		<mat-label>Nombre:</mat-label>
+		<input formControlName="nombre" matInput type="text" placeholder="Ruta" />
+	</mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Descripción:</mat-label>
+        <input formControlName="descripcion" matInput type="text" placeholder="Ruta" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Estado:</mat-label>
+        <input formControlName="estado" matInput type="text" placeholder="Ruta" />
+    </mat-form-field>
+
+<!-- 
+	<mat-form-field appearance="outline">
+		<mat-label>Placa</mat-label>
+		<mat-select placeholder="Seleccionar placa" formControlName="ID_MOVIL">
+			<app-search-select-custom (textSearch)="filterPlaca($event)" [enableBanner]="listPlacas.length == 0">
+			</app-search-select-custom>
+			<mat-option *ngFor="let s of listPlacas" [value]="s.ID_MOVIL">
+				{{ s.ID_PLACA }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field> -->
+
+</div>
+<div mat-dialog-actions class="container_action_button_modal">
+	<button mat-flat-button mat-dialog-close>Cerrar</button>
+	<button mat-flat-button color="primary" (click)="saveDocumentType()" *ngIf="data.type === 'add'">
+		Guardar
+	</button>
+	<button mat-flat-button color="primary" (click)="updateDocumentType()" *ngIf="data.type === 'edit'">
+		Editar
+	</button>
+</div>
