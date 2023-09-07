@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { navItems } from './sidebar-data';
-import { NavService } from '../../../services/nav.service';
+import { NavService } from '../../../services/dashboard/nav.service';
+import { navItems } from 'src/app/model/layout.model';
 
 @Component({
   selector: 'app-sidebar',

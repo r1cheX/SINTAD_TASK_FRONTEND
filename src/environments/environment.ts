@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiURL: "http://localhost:8080/api"
+  baseUrl_api: "http://localhost:8080/api-sintad",
+  secret_key: "sintadTask2023"
 };
 
 /*

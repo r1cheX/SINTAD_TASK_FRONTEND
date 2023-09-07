@@ -25,30 +25,25 @@
     <button mat-menu-item>
       <mat-icon class="d-flex align-items-center"
         ><i-tabler name="user" class="icon-18 d-flex"></i-tabler></mat-icon
-      >Nombre de Usuario
-    </button>
-    <!-- <button mat-menu-item>
-      <mat-icon class="d-flex align-items-center"
-        ><i-tabler name="mail" class="icon-18 d-flex"></i-tabler></mat-icon
-      >My Account
+      > {{ username }}
     </button>
     <button mat-menu-item>
       <mat-icon class="d-flex align-items-center"
-        ><i-tabler
-          name="list-check"
-          class="icon-18 d-flex"
-        ></i-tabler></mat-icon
-      >My Task
-    </button> -->
+        ><i-tabler name="mail" class="icon-18 d-flex"></i-tabler></mat-icon
+      > {{ email }}
+    </button>
 
     <div class="p-x-12 m-t-12">
-      <a
-        [routerLink]="['/authentication/login']"
+      <button
+        [routerLink]="['/']"
         mat-stroked-button
         color="primary"
         class="w-100"
-        >Logout</a
+        (click)="logout()"
       >
+        Cerrar Sesión
+      </button>
+ 
     </div>
   </mat-menu>
 </mat-toolbar>

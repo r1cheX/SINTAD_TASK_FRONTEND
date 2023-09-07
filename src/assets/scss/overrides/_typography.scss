@@ -9,6 +9,10 @@
   color: $textPrimary;
 }
 
+.mat-body-1 a {
+  cursor: pointer;
+}
+
 // Use the default configuration.
 $theme-typography: mat.define-typography-config(
   $font-family: "Plus Jakarta Sans",

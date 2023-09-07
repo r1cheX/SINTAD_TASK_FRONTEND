@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { InterceptorService } from './services/interceptors/interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,33 +19,53 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Import Layouts
 import { FullComponent } from './layouts/full/full.component';
-import { BlankComponent } from './layouts/blank/blank.component';
 
 // Vertical Layout
 import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HeaderComponent } from './layouts/full/header/header.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { Error404Component } from './pages/error404/error404.component';
+import { LoaderComponent } from './pages/loader/loader.component';
+
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FullComponent,
-    BlankComponent,
-    SidebarComponent,
-    HeaderComponent,
-    AppNavItemComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    TablerIconsModule.pick(TablerIcons),
-  ],
-  exports: [TablerIconsModule],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        FullComponent,
+        SidebarComponent,
+        HeaderComponent,
+        AppNavItemComponent,
+        LoginComponent,
+        RegisterComponent,
+        Error404Component,
+        LoaderComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        TablerIconsModule.pick(TablerIcons),
+    ],
+    exports: [TablerIconsModule],
+    bootstrap: [AppComponent],
+    providers: [
+        CookieService,
+        {
+            provide: MAT_DATE_LOCALE,
+            useValue: 'en-GB'
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterceptorService,
+            multi: true
+        }
+    ]
 })
-export class AppModule {}
+export class AppModule { }
