@@ -6,7 +6,6 @@ import { DialogDocumentType } from 'src/app/model/documentType.model';
 @Component({
 	selector: 'app-modal-add-edit-document-type',
 	templateUrl: './modal-add-edit-document-type.component.html',
-	styleUrls: ['./modal-add-edit-document-type.component.scss']
 })
 export class ModalAddEditDocumentTypeComponent implements OnInit {
 

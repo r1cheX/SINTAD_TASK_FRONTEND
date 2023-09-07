@@ -1,1 +1,10 @@
-<p>modal-delete-contributor-type works!</p>
+<h2 class="title_modal" mat-dialog-title>
+	Eliminar Tipo de Contribuyente
+</h2>
+<div class="container_body_form" >
+	<p class="f-w-400">¿Está seguro que desea <strong>eliminar</strong> este tipo de contribuyente?</p>
+	<button mat-flat-button color="warn" (click)="deleteContributorType()">
+		Eliminar
+	</button>
+	<button mat-flat-button mat-dialog-close>Cerrar</button>
+</div>

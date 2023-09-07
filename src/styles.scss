@@ -8,7 +8,26 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* Fading entrances  */
+/* ====== STYLES FOR MANTAINERS ======= */
+
+
+.title_modal {
+    margin-left: -0.6rem;
+}
+
+.container_body_form {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.container_body_form button {
+    margin-bottom: 0.4rem;
+}
+
+
+/* ====== ANIMATIONS FOR LOAD ======= */
+
 @-webkit-keyframes fadeIn {
     from {
         opacity: 0;
@@ -18,8 +37,6 @@ body {
         opacity: 1;
     }
 }
-
-/* ====== ANIMATIONS ======= */
 
 @keyframes fadeIn {
     from {

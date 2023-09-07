@@ -1,1 +1,18 @@
-<p>modal-add-edit-contributor-type works!</p>
+<h2 class="title_modal" mat-dialog-title>
+	{{ data.type === "add" ? "Agregar" : "Editar" }} Tipo de Contribuyente
+</h2>
+<div class="container_body_form" [formGroup]="form">
+	<mat-form-field appearance="outline">
+		<mat-label>Nombre:</mat-label>
+		<input formControlName="nombre" matInput type="text" class="w-200" />
+	</mat-form-field>
+
+
+	<button mat-flat-button color="primary" (click)="saveContributorType()" *ngIf="data.type === 'add'">
+		Guardar
+	</button>
+	<button mat-flat-button color="primary" (click)="updateContributorType()" *ngIf="data.type === 'edit'">
+		Editar
+	</button>
+	<button mat-flat-button mat-dialog-close>Cerrar</button>
+</div>

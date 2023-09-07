@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAddEditDocumentTypeComponent } from './component/modal-add-edit-document-type/modal-add-edit-document-type.component';
 import { ModalDeleteDocumentTypeComponent } from './component/modal-delete-document-type/modal-delete-document-type.component';
+import { DocumentType } from 'src/app/model/documentType.model';
 
 export interface productsData {
     id: number;
@@ -56,7 +57,6 @@ const ELEMENT_DATA: productsData[] = [
 @Component({
     selector: 'app-document-type',
     templateUrl: './document-type.component.html',
-    styleUrls: ['./document-type.component.scss']
 })
 export class DocumentTypeComponent {
 
@@ -71,7 +71,7 @@ export class DocumentTypeComponent {
         this.getDocumentTypes();
     }
 
-    modalDocumentType(type: 'add' | 'edit') {
+    openModalDocument(type: 'add' | 'edit') {
         const modal = this.dialog.open(ModalAddEditDocumentTypeComponent, {
         	width: '22rem',
 			height: '25.5rem',
@@ -87,10 +87,9 @@ export class DocumentTypeComponent {
                 this.getDocumentTypes();
             }
         });
-
     }
 
-    deleteDocumentType(documentType: DocumentType) {
+    openModalDeleteDocument(documentType: DocumentType) {
         const modal = this.dialog.open(ModalDeleteDocumentTypeComponent, {
 			width: '24rem',
 			height: '14rem',

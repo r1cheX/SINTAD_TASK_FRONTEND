@@ -1,1 +1,49 @@
-<p>modal-add-edit-entity works!</p>
+<h2 class="title_modal" mat-dialog-title>
+	{{ data.type === "add" ? "Agregar" : "Editar" }} Entidad
+</h2>
+<div class="container_body_form" [formGroup]="form">
+	<mat-form-field appearance="outline">
+		<mat-label>Nro. Documento:</mat-label>
+		<input formControlName="nro_documento" matInput type="text" class="w-200" />
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Razon Social:</mat-label>
+		<input formControlName="razon_social" matInput type="text" class="w-200" />
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Nombre Comercial:</mat-label>
+		<input formControlName="nombre_comercial" matInput type="text" class="w-200" />
+	</mat-form-field>
+
+    <mat-form-field appearance="outline">
+		<mat-label>Direccion:</mat-label>
+		<input formControlName="direccion" matInput type="text" class="w-200" />
+	</mat-form-field>
+
+    <mat-form-field appearance="outline">
+		<mat-label>Teléfono:</mat-label>
+		<input formControlName="telefono" matInput type="text" class="w-200" />
+	</mat-form-field>
+
+	<!-- 
+	<mat-form-field appearance="outline">
+		<mat-label>Placa</mat-label>
+		<mat-select placeholder="Seleccionar placa" formControlName="ID_MOVIL">
+			<app-search-select-custom (textSearch)="filterPlaca($event)" [enableBanner]="listPlacas.length == 0">
+			</app-search-select-custom>
+			<mat-option *ngFor="let s of listPlacas" [value]="s.ID_MOVIL">
+				{{ s.ID_PLACA }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field> -->
+
+	<button mat-flat-button color="primary" (click)="saveEntity()" *ngIf="data.type === 'add'">
+		Guardar
+	</button>
+	<button mat-flat-button color="primary" (click)="updateEntity()" *ngIf="data.type === 'edit'">
+		Editar
+	</button>
+	<button mat-flat-button mat-dialog-close>Cerrar</button>
+</div>

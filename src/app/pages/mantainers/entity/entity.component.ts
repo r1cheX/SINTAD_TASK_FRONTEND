@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAddEditEntityComponent } from './component/modal-add-edit-entity/modal-add-edit-entity.component';
+import { ModalDeleteEntityComponent } from './component/modal-delete-entity/modal-delete-entity.component';
+import { Entity } from 'src/app/model/entity.model';
 
 export interface productsData {
     id: number;
@@ -53,18 +57,54 @@ const ELEMENT_DATA: productsData[] = [
 @Component({
     selector: 'app-entity',
     templateUrl: './entity.component.html',
-    styleUrls: ['./entity.component.scss']
 })
 export class EntityComponent implements OnInit {
 
     displayedColumns: string[] = ['razon_social', 'tipo_doc', 'tipo_contribuyente', 'estado', 'actions'];
     dataSource = ELEMENT_DATA;
 
-    constructor() { }
+    constructor(
+        private dialog: MatDialog,
+    ) { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void { 
+        this.getEntities();
+    }
 
-    openDialog() {
+    openModalEntity(type: 'add' | 'edit') {
+        const modal = this.dialog.open(ModalAddEditEntityComponent, {
+        	width: '22rem',
+			height: '35rem',
+            data: {
+                type,
+                documentType: [],
+            },
+            disableClose: true,
+        });
+
+        modal.afterClosed().subscribe((result) => {
+            if (result) {
+                this.getEntities();
+            }
+        });
+    }
+
+    openModalDeleteEntity(entity: Entity) {
+        const modal = this.dialog.open(ModalDeleteEntityComponent, {
+			width: '24rem',
+			height: '13rem',
+			data: entity,
+			disableClose: true,
+		});
+
+		modal.afterClosed().subscribe((result) => {
+			if (result) {
+				this.getEntities();
+			}
+		});
+    }
+
+    getEntities() {
 
     }
 
