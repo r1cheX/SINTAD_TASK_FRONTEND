@@ -21,15 +21,15 @@ export class ModalAddEditDocumentTypeComponent implements OnInit {
 		}, [Validators.required]),
 		nombre: new FormControl({
 			value: null,
-			disabled: true,
+			disabled: false,
 		}, [Validators.required]),
 		descripcion: new FormControl({
 			value: null,
-			disabled: true,
+			disabled: false,
 		}, [Validators.required]),
 		estado: new FormControl({
 			value: null,
-			disabled: true,
+			disabled: false,
 		}, [Validators.required]),
 	});
 

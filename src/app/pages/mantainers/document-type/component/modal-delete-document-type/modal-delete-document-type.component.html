@@ -1,1 +1,10 @@
-<p>modal-delete-document-type works!</p>
+<h2 class="title_modal" mat-dialog-title>
+	Eliminar Tipo Documento
+</h2>
+<div class="container_body_form" >
+	<p class="f-w-400">¿Está seguro que quiere <strong>eliminar</strong> este tipo de documento?</p>
+	<button mat-flat-button color="primary" (click)="deleteDocumentType()">
+		Eliminar
+	</button>
+	<button mat-flat-button mat-dialog-close>Cerrar</button>
+</div>

@@ -1,28 +1,28 @@
-<h2 mat-dialog-title>
-	{{ data.type === "add" ? "Agregar" : "Editar" }} Movimiento
+<h2 class="title_modal" mat-dialog-title>
+	{{ data.type === "add" ? "Agregar" : "Editar" }} Tipo Documento
 </h2>
-<div class="container_form_modal container_body_form" [formGroup]="form">
+<div class="container_body_form" [formGroup]="form">
 	<mat-form-field appearance="outline">
 		<mat-label>Código:</mat-label>
-		<input formControlName="codigo" matInput type="text" placeholder="Ruta" />
+		<input formControlName="codigo" matInput type="text" class="w-200" />
 	</mat-form-field>
 
-    <mat-form-field appearance="outline">
+	<mat-form-field appearance="outline">
 		<mat-label>Nombre:</mat-label>
-		<input formControlName="nombre" matInput type="text" placeholder="Ruta" />
+		<input formControlName="nombre" matInput type="text" class="w-200" />
 	</mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Descripción:</mat-label>
-        <input formControlName="descripcion" matInput type="text" placeholder="Ruta" />
-    </mat-form-field>
+	<mat-form-field appearance="outline">
+		<mat-label>Descripción:</mat-label>
+		<input formControlName="descripcion" matInput type="text" class="w-200" />
+	</mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Estado:</mat-label>
-        <input formControlName="estado" matInput type="text" placeholder="Ruta" />
-    </mat-form-field>
+	<!-- <mat-form-field appearance="outline">
+		<mat-label>Estado:</mat-label>
+		<input formControlName="estado" matInput type="text" class="w-100"/>
+	</mat-form-field> -->
 
-<!-- 
+	<!-- 
 	<mat-form-field appearance="outline">
 		<mat-label>Placa</mat-label>
 		<mat-select placeholder="Seleccionar placa" formControlName="ID_MOVIL">
@@ -34,13 +34,11 @@
 		</mat-select>
 	</mat-form-field> -->
 
-</div>
-<div mat-dialog-actions class="container_action_button_modal">
-	<button mat-flat-button mat-dialog-close>Cerrar</button>
 	<button mat-flat-button color="primary" (click)="saveDocumentType()" *ngIf="data.type === 'add'">
 		Guardar
 	</button>
 	<button mat-flat-button color="primary" (click)="updateDocumentType()" *ngIf="data.type === 'edit'">
 		Editar
 	</button>
+	<button mat-flat-button mat-dialog-close>Cerrar</button>
 </div>

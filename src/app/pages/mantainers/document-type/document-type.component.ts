@@ -73,8 +73,8 @@ export class DocumentTypeComponent {
 
     modalDocumentType(type: 'add' | 'edit') {
         const modal = this.dialog.open(ModalAddEditDocumentTypeComponent, {
-            width: '28rem',
-            height: '45rem',
+        	width: '22rem',
+			height: '25.5rem',
             data: {
                 type,
                 documentType: [],
@@ -92,8 +92,8 @@ export class DocumentTypeComponent {
 
     deleteDocumentType(documentType: DocumentType) {
         const modal = this.dialog.open(ModalDeleteDocumentTypeComponent, {
-			width: '22rem',
-			height: '11.5rem',
+			width: '24rem',
+			height: '14rem',
 			data: documentType,
 			disableClose: true,
 		});
