@@ -28,6 +28,13 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { LoaderComponent } from './pages/loader/loader.component';
+import { AppDashboardComponent } from './pages/dashboard/dashboard.component';
+import { EntityComponent } from './pages/mantainers/entity/entity.component';
+import { DocumentTypeComponent } from './pages/mantainers/document-type/document-type.component';
+import { ContributorTypeComponent } from './pages/mantainers/contributor-type/contributor-type.component';
+import { ModalAddEditContributorTypeComponent } from './pages/mantainers/contributor-type/component/modal-add-edit-contributor-type/modal-add-edit-contributor-type.component';
+import { ModalAddEditDocumentTypeComponent } from './pages/mantainers/document-type/component/modal-add-edit-document-type/modal-add-edit-document-type.component';
+import { ModalAddEditEntityComponent } from './pages/mantainers/entity/component/modal-add-edit-entity/modal-add-edit-entity.component';
 
 
 
@@ -41,7 +48,14 @@ import { LoaderComponent } from './pages/loader/loader.component';
         LoginComponent,
         RegisterComponent,
         Error404Component,
-        LoaderComponent
+        LoaderComponent,
+        AppDashboardComponent,
+        EntityComponent,
+        DocumentTypeComponent,
+        ContributorTypeComponent,
+        ModalAddEditContributorTypeComponent,
+        ModalAddEditDocumentTypeComponent,
+        ModalAddEditEntityComponent,
     ],
     imports: [
         BrowserModule,

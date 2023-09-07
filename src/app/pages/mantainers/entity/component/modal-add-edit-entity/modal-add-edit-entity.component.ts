@@ -8,55 +8,6 @@ import { DialogEntity } from 'src/app/model/entity.model';
     templateUrl: './modal-add-edit-entity.component.html',
 })
 
-/*
-implements OnInit {
-
-  form = new FormGroup({
-    id_tipo_documento: new FormControl({
-      value: null,
-      disabled: false,
-    }),
-    codigo: new FormControl({
-      value: null,
-      disabled: false,
-    }, [Validators.required]),
-    nombre: new FormControl({
-      value: null,
-      disabled: false,
-    }, [Validators.required]),
-    descripcion: new FormControl({
-      value: null,
-      disabled: false,
-    }, [Validators.required]),
-    estado: new FormControl({
-      value: null,
-      disabled: false,
-    }, [Validators.required]),
-  });
-
-  constructor(
-    public dialogRef: MatDialogRef<ModalAddEditDocumentTypeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogDocumentType
-  ) {
-    console.log('debugging data que llega modal-->', data);
-
-   }
-
-  ngOnInit(): void {
-  }
-
-  saveDocumentType() {
-
-  }
-
-
-  updateDocumentType() {
-
-  }
-
-}
-
-*/
 export class ModalAddEditEntityComponent implements OnInit {
 
     form = new FormGroup({

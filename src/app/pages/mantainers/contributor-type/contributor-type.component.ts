@@ -1,57 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAddEditContributorTypeComponent } from './component/modal-add-edit-contributor-type/modal-add-edit-contributor-type.component';
 import { ModalDeleteContributorTypeComponent } from './component/modal-delete-contributor-type/modal-delete-contributor-type.component';
 import { ContributorType } from 'src/app/model/contributorType.model';
-
-export interface productsData {
-    id: number;
-    imagePath: string;
-    uname: string;
-    position: string;
-    productName: string;
-    budget: number;
-    priority: string;
-}
-
-const ELEMENT_DATA: productsData[] = [
-    {
-        id: 1,
-        imagePath: 'assets/images/profile/user-1.jpg',
-        uname: 'Sunil Joshi',
-        position: 'Web Designer',
-        productName: 'Elite Admin',
-        budget: 3.9,
-        priority: 'low',
-    },
-    {
-        id: 2,
-        imagePath: 'assets/images/profile/user-2.jpg',
-        uname: 'Andrew McDownland',
-        position: 'Project Manager',
-        productName: 'Real Homes Theme',
-        budget: 24.5,
-        priority: 'medium',
-    },
-    {
-        id: 3,
-        imagePath: 'assets/images/profile/user-3.jpg',
-        uname: 'Christopher Jamil',
-        position: 'Project Manager',
-        productName: 'MedicalPro Theme',
-        budget: 12.8,
-        priority: 'high',
-    },
-    {
-        id: 4,
-        imagePath: 'assets/images/profile/user-4.jpg',
-        uname: 'Nirav Joshi',
-        position: 'Frontend Engineer',
-        productName: 'Hosting Press HTML',
-        budget: 2.4,
-        priority: 'critical',
-    },
-];
+import { MatTableDataSource } from '@angular/material/table';
+import { ContributorTypeService } from '../../../services/mantainers/contributor-type.service';
+import { ApiError, ApiResponse } from 'src/app/model/response.model';
+import { alertHelper } from 'src/app/helpers/alerts.helper';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -60,15 +16,32 @@ const ELEMENT_DATA: productsData[] = [
 })
 export class ContributorTypeComponent {
 
+    dataSource = new MatTableDataSource<ContributorType>();
     displayedColumns: string[] = ['nombre', 'estado', 'actions'];
-    dataSource = ELEMENT_DATA;
+
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+    loading: boolean = false;
 
     constructor(
         private dialog: MatDialog,
+        private contributorService: ContributorTypeService,
+        private alert: alertHelper,
 
     ) { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.getContributorTypes();
+    }
+
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+    }
+
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
 
     openModalContributor(type: 'add' | 'edit') {
         const modal = this.dialog.open(ModalAddEditContributorTypeComponent, {
@@ -105,8 +78,20 @@ export class ContributorTypeComponent {
 
 
     getContributorTypes() {
-
-
-
+        this.loading = true;
+        this.contributorService
+            .getContributorTypes()
+            .subscribe({
+                next: (contributorTypes: ContributorType[]) => {
+                    console.log('debugging res-->', contributorTypes);
+                    this.loading = false;
+                    this.dataSource.data = contributorTypes;
+                    console.log('debugging datasoruce-->', this.dataSource);
+                },
+                error: (err: ApiError) => {
+                    this.loading = false;
+                    this.alert.error(err.status);
+                }
+            });
     }
 }

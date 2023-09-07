@@ -30,16 +30,16 @@ export const navItems: NavItem[] = [
     {
         displayName: 'Entidad',
         iconName: 'building',
-        route: 'main/mantainers/entity',
+        route: 'main/entity',
     },
     {
         displayName: 'Tipo de Documento',
         iconName: 'book-2',
-        route: 'main/mantainers/document-type',
+        route: 'main/document-type',
     },
     {
         displayName: 'Tipo de contribuyente',
         iconName: 'users',
-        route: 'main/mantainers/contributor-type',
+        route: 'main/contributor-type',
     },
 ];

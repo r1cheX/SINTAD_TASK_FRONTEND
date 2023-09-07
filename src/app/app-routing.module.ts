@@ -5,6 +5,10 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthGuard } from './services/interceptors/auth.guard';
 import { Error404Component } from './pages/error404/error404.component';
+import { AppDashboardComponent } from './pages/dashboard/dashboard.component';
+import { ContributorTypeComponent } from './pages/mantainers/contributor-type/contributor-type.component';
+import { DocumentTypeComponent } from './pages/mantainers/document-type/document-type.component';
+import { EntityComponent } from './pages/mantainers/entity/entity.component';
 
 const routes: Routes = [
     {
@@ -22,15 +26,24 @@ const routes: Routes = [
         children: [
             {
                 path: 'dashboard',
-                loadChildren: () =>
-                    import('./pages/pages.module').then((m) => m.PagesModule),
+                canActivate: [AuthGuard],
+                component: AppDashboardComponent
+             
             },
             {
-                path: 'mantainers',
-                loadChildren: () =>
-                    import('./pages/mantainers/mantainers.module').then(
-                        (m) => m.MantainersModule
-                    ),
+                path: 'entity',
+                canActivate: [AuthGuard],
+                component: EntityComponent,
+            },
+            {
+                path: 'document-type',
+                canActivate: [AuthGuard],
+                component: DocumentTypeComponent,
+            },
+            {
+                path: 'contributor-type',
+                canActivate: [AuthGuard],
+                component: ContributorTypeComponent,
             },
         ],
     },
