@@ -16,11 +16,11 @@ export class ContributorTypeService {
         return this.http.get(`${environment.baseUrl_api}/tipoContribuyente`);
     }
 
-    saveContributorType(data: ContributorType): Observable<any> {
+    saveContributorType(data: any): Observable<any> {
         return this.http.post(`${environment.baseUrl_api}/tipoContribuyente`, data);
     }
 
-    updateContributorType(id: number, data: ContributorType): Observable<any> {
+    updateContributorType(id: number, data: any): Observable<any> {
         return this.http.put(`${environment.baseUrl_api}/tipoContribuyente/` + id, data);
     }
 

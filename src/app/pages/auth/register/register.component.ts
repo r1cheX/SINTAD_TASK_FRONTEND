@@ -40,7 +40,6 @@ export class RegisterComponent implements OnInit {
 			.register(this.registerForm.value)
 			.subscribe({
 				next: (res: ApiResponse) => {
-					console.log('debugging peticion del register -->', res);
 					if (res.status == 'success') {
 						this.alert.topCenter(res.message, 'success');
 						this.router.navigate(['/']);

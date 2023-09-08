@@ -1,16 +1,18 @@
 export interface Entity{
-    id_entidad: string;
-    id_tipo_documento: string;
-    nro_documento: string;
-    razon_social: string;
-    nombre_comercial: string;
-    id_tipo_contribuyente: string;
+    id: number;
+    nroDocumento: string;
+    razonSocial: string;
+    nombreComercial: string;
+    idTipoDocumento: number;
+    idTipoContribuyente: number;
     direccion: string;
     telefono: string;
-    estado: string;
+    estado: boolean;
+    tipoContribuyenteNombre?: string;
+    tipoDocumentoNombre?: string;
 }
 
 export interface DialogEntity {
     type: 'add' | 'edit';
-    document?: Entity;
+    entity: Entity;
 }

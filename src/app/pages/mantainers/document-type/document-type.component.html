@@ -12,7 +12,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="d-flex justify-content-end">
-                    <button mat-flat-button color="primary" (click)="openModalDocument('add')">
+                    <button mat-flat-button color="primary" (click)="openModalAddDocument()">
                         <mat-icon>add</mat-icon>
                         <span class="m-l-8">Nuevo</span>
                     </button>
@@ -69,7 +69,7 @@
                                 Acciones
                             </th>
                             <td mat-cell *matCellDef="let element">
-                                <button mat-flat-button color="primary" (click)="openModalDocument('edit')">
+                                <button mat-flat-button color="primary" (click)="openModalEditDocument(element)">
                                     <mat-icon class="m-l-8 mat-18">edit</mat-icon>
                                 </button>
                                 <button mat-flat-button color="warn" class="m-l-8"
@@ -90,5 +90,5 @@
 
         </div>
     </mat-card-content>
-    <app-loader *ngIf="loading" width="70rem" height="80rem"></app-loader>
+    <app-loader *ngIf="loading"></app-loader>
 </mat-card>

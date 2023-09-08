@@ -1,10 +1,11 @@
 export interface ContributorType{
-    id_tipo_contribuyente: number;
+    id_tipo_contribuyente?: number;
+    id: number;
     nombre: string;
-    estado: string;
+    estado: boolean;
 }
 
 export interface DialogContributorType {
     type: 'add' | 'edit';
-    document?: ContributorType;
+    contributorType: ContributorType;
 }

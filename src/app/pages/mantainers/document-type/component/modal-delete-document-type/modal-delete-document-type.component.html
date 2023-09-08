@@ -1,6 +1,7 @@
 <h2 class="title_modal" mat-dialog-title>
 	Eliminar Tipo de Documento
 </h2>
+<app-loader *ngIf="loading"></app-loader>
 <div class="container_body_form" >
 	<p class="f-w-400">¿Está seguro que desea <strong>eliminar</strong> este tipo de documento?</p>
 	<button mat-flat-button color="warn" (click)="deleteDocumentType()">

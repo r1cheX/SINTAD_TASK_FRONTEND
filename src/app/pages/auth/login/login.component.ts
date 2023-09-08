@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
 			.login(email, password)
 			.subscribe({
 				next: (user: User) => {
-					console.log('debugging -->', user);
 					this.authService.setCookies(user);
 					this.authService.setToken(user.token!)
 					this.loading = false;

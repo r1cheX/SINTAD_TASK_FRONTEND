@@ -1,0 +1,16 @@
+<div class="wrapper_input">
+	<mat-icon color="primary" >search</mat-icon>
+	<input
+		matInput
+		type="text"
+		placeholder="Buscar"
+		class="input-search-select"
+		[(ngModel)]="search"
+		(ngModelChange)="seeker($event)"
+	/>
+</div>
+<ng-container *ngIf="enableBanner">
+	<div class="container_msj mat-body-1">
+		<h3>No se encontró resultados.</h3>
+	</div>
+</ng-container>

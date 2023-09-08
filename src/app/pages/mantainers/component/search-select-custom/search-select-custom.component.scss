@@ -1,0 +1,36 @@
+.wrapper_input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    border-bottom: 2px solid #5d87ff;
+    
+    position: sticky;
+    top: 0;
+    background-color:#ffffff;
+    margin-bottom: 0.5rem;
+    z-index: 9;
+  }
+  
+  .input-search-select{
+    padding: 0.7rem 1rem;
+    z-index: 1;
+    transition: all 300ms;
+    color: #5d87ff;
+    font-weight: 500;
+    font-size: 1rem;
+    font-style: italic;
+    width: calc(100% - 2rem);
+    margin: 0 !important;
+  }
+  
+  .wrapper_input:focus-within {
+    border-bottom: 2px solid #5d87ff;
+    transition: all 300ms;
+  }
+  
+  .container_msj {
+    padding: 0 2rem;
+  }
+  

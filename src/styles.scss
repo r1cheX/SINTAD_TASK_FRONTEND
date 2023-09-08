@@ -10,6 +10,12 @@ body {
 
 /* ====== STYLES FOR MANTAINERS ======= */
 
+.text-hidden {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 .title_modal {
     margin-left: 5px;
     text-align: start;

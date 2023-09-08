@@ -41,12 +41,12 @@ export class DocumentTypeComponent {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    openModalDocument(type: 'add' | 'edit') {
+    openModalAddDocument() {
         const modal = this.dialog.open(ModalAddEditDocumentTypeComponent, {
             width: '22rem',
             height: '25.5rem',
             data: {
-                type,
+                type: 'add',
                 documentType: [],
             },
             disableClose: true,
@@ -57,6 +57,25 @@ export class DocumentTypeComponent {
                 this.getDocumentTypes();
             }
         });
+    }
+
+    openModalEditDocument(documentType: DocumentType) {
+        const modal = this.dialog.open(ModalAddEditDocumentTypeComponent, {
+            width: '22rem',
+            height: '25.5rem',
+            data: {
+                type: 'edit',
+                documentType,
+            },
+            disableClose: true,
+        });
+
+        modal.afterClosed().subscribe((result) => {
+            if (result) {
+                this.getDocumentTypes();
+            }
+        });
+
     }
 
     openModalDeleteDocument(documentType: DocumentType) {
@@ -80,17 +99,14 @@ export class DocumentTypeComponent {
             .getDocumentTypes()
             .subscribe({
                 next: (documentTypes: DocumentType[]) => {
-                    console.log('debugging res-->', documentTypes);
                     this.loading = false;
                     this.dataSource.data = documentTypes;
-                    console.log('debugging datasoruce-->', this.dataSource);
                 },
                 error: (err: ApiError) => {
                     this.loading = false;
                     this.alert.error(err.status);
                 }
             });
-
     }
 
 }

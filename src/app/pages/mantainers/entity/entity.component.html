@@ -12,7 +12,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="d-flex justify-content-end">
-                    <button mat-flat-button color="primary" (click)="openModalEntity('add')">
+                    <button mat-flat-button color="primary" (click)="openModalAddEntity()">
                         <mat-icon>add</mat-icon>
                         <span class="m-l-8">Nuevo</span>
                     </button>
@@ -39,7 +39,7 @@
                                 Tipo Documento
                             </th>
                             <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                {{ element.idTipoDocumento }}
+                                {{ element.tipoDocumentoNombre }}
                             </td>
                         </ng-container>
 
@@ -48,7 +48,7 @@
                                 Tipo Contribuyente
                             </th>
                             <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                {{ element.idTipoContribuyente }}
+                                {{ element.tipoContribuyenteNombre }}
                             </td>
                         </ng-container>
 
@@ -70,7 +70,7 @@
                                 Acciones
                             </th>
                             <td mat-cell *matCellDef="let element">
-                                <button mat-flat-button color="primary" (click)="openModalEntity('edit')">
+                                <button mat-flat-button color="primary" (click)="openModalEditEntity(element)">
                                     <mat-icon class="m-l-8 mat-18">edit</mat-icon>
                                 </button>
                                 <button mat-flat-button color="warn" class="m-l-8"
@@ -84,7 +84,7 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
                     </table>
-                    <mat-paginator class="mat-elevation-z1" id="paginator_stores" [pageSize]="5"
+                    <mat-paginator class="mat-elevation-z1" id="paginator_stores" class="w-100" [pageSize]="5"
                         [showFirstLastButtons]="true">
                     </mat-paginator>
                 </div>
@@ -93,5 +93,5 @@
         </div>
 
     </mat-card-content>
-    <app-loader *ngIf="loading" width="70rem" height="80rem"></app-loader>
+    <app-loader *ngIf="loading"></app-loader>
 </mat-card>

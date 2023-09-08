@@ -1,20 +1,43 @@
 <h2 class="title_modal" mat-dialog-title>
 	{{ data.type === "add" ? "Agregar" : "Editar" }} Entidad
 </h2>
+<app-loader *ngIf="loading"></app-loader>
 <div class="container_body_form" [formGroup]="form">
 	<mat-form-field appearance="outline">
+		<mat-label>Tipo Documento</mat-label>
+		<mat-select placeholder="Seleccionar Tipo Documento" formControlName="idTipoDocumento">
+			<app-search-select-custom (textSearch)="filterDocuments($event)" [enableBanner]="listDocumentTypes.length == 0">
+			</app-search-select-custom>
+			<mat-option *ngFor="let dt of listDocumentTypes" [value]="dt.id">
+				{{ dt.nombre }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+	<mat-form-field  appearance="outline">
 		<mat-label>Nro. Documento:</mat-label>
-		<input formControlName="nro_documento" matInput type="text" class="w-200" />
+		<input  formControlName="nroDocumento" matInput type="text" minlength="8" maxlength="25"  class="w-200" />
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Tipo Contribuyente</mat-label>
+		<mat-select placeholder="Seleccionar Tipo Contribuyente" formControlName="idTipoContribuyente">
+			<app-search-select-custom (textSearch)="filterContributors($event)" [enableBanner]="listContributorTypes.length == 0">
+			</app-search-select-custom>
+			<mat-option *ngFor="let ct of listContributorTypes" [value]="ct.id">
+				{{ ct.nombre }}
+			</mat-option>
+		</mat-select>
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
 		<mat-label>Razon Social:</mat-label>
-		<input formControlName="razon_social" matInput type="text" class="w-200" />
+		<input formControlName="razonSocial" matInput type="text" class="w-200" />
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
 		<mat-label>Nombre Comercial:</mat-label>
-		<input formControlName="nombre_comercial" matInput type="text" class="w-200" />
+		<input formControlName="nombreComercial" matInput type="text" class="w-200" />
 	</mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -27,22 +50,10 @@
 		<input formControlName="telefono" matInput type="text" class="w-200" />
 	</mat-form-field>
 
-	<!-- 
-	<mat-form-field appearance="outline">
-		<mat-label>Placa</mat-label>
-		<mat-select placeholder="Seleccionar placa" formControlName="ID_MOVIL">
-			<app-search-select-custom (textSearch)="filterPlaca($event)" [enableBanner]="listPlacas.length == 0">
-			</app-search-select-custom>
-			<mat-option *ngFor="let s of listPlacas" [value]="s.ID_MOVIL">
-				{{ s.ID_PLACA }}
-			</mat-option>
-		</mat-select>
-	</mat-form-field> -->
-
-	<button mat-flat-button color="primary" (click)="saveEntity()" *ngIf="data.type === 'add'">
+	<button mat-flat-button color="primary" [disabled]="!form.valid" (click)="saveEntity()" *ngIf="data.type === 'add'">
 		Guardar
 	</button>
-	<button mat-flat-button color="primary" (click)="updateEntity()" *ngIf="data.type === 'edit'">
+	<button mat-flat-button color="primary" [disabled]="!form.valid" (click)="updateEntity()" *ngIf="data.type === 'edit'">
 		Editar
 	</button>
 	<button mat-flat-button mat-dialog-close>Cerrar</button>

@@ -42,13 +42,13 @@ export class EntityComponent implements OnInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    openModalEntity(type: 'add' | 'edit') {
+    openModalAddEntity(){
         const modal = this.dialog.open(ModalAddEditEntityComponent, {
-        	width: '22rem',
-			height: '35rem',
+        	width: '26rem',
+			height: '45rem',
             data: {
-                type,
-                documentType: [],
+                type: 'add',
+                entity: [],
             },
             disableClose: true,
         });
@@ -59,6 +59,25 @@ export class EntityComponent implements OnInit {
             }
         });
     }
+
+    openModalEditEntity(entity: Entity){
+        const modal = this.dialog.open(ModalAddEditEntityComponent, {
+        	width: '26rem',
+			height: '45rem',
+            data: {
+                type: 'edit',
+                entity,
+            },
+            disableClose: true,
+        });
+
+        modal.afterClosed().subscribe((result) => {
+            if (result) {
+                this.getEntities();
+            }
+        });
+    }
+
 
     openModalDeleteEntity(entity: Entity) {
         const modal = this.dialog.open(ModalDeleteEntityComponent, {

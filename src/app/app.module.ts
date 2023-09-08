@@ -35,6 +35,10 @@ import { ContributorTypeComponent } from './pages/mantainers/contributor-type/co
 import { ModalAddEditContributorTypeComponent } from './pages/mantainers/contributor-type/component/modal-add-edit-contributor-type/modal-add-edit-contributor-type.component';
 import { ModalAddEditDocumentTypeComponent } from './pages/mantainers/document-type/component/modal-add-edit-document-type/modal-add-edit-document-type.component';
 import { ModalAddEditEntityComponent } from './pages/mantainers/entity/component/modal-add-edit-entity/modal-add-edit-entity.component';
+import { ModalDeleteContributorTypeComponent } from './pages/mantainers/contributor-type/component/modal-delete-contributor-type/modal-delete-contributor-type.component';
+import { ModalDeleteDocumentTypeComponent } from './pages/mantainers/document-type/component/modal-delete-document-type/modal-delete-document-type.component';
+import { ModalDeleteEntityComponent } from './pages/mantainers/entity/component/modal-delete-entity/modal-delete-entity.component';
+import { SearchSelectCustomComponent } from './pages/mantainers/component/search-select-custom/search-select-custom.component';
 
 
 
@@ -56,6 +60,10 @@ import { ModalAddEditEntityComponent } from './pages/mantainers/entity/component
         ModalAddEditContributorTypeComponent,
         ModalAddEditDocumentTypeComponent,
         ModalAddEditEntityComponent,
+        ModalDeleteContributorTypeComponent,
+        ModalDeleteDocumentTypeComponent,
+        ModalDeleteEntityComponent,
+        SearchSelectCustomComponent
     ],
     imports: [
         BrowserModule,

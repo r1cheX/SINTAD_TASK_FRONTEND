@@ -7,9 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LoaderComponent implements OnInit {
 	@Input()
-	width: string = '2rem';
+	width: string = 'rem';
 	@Input()
-	height: string = '2rem';
+	height: string = 'rem';
 
 	constructor() { }
 

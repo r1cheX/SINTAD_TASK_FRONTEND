@@ -43,13 +43,31 @@ export class ContributorTypeComponent {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    openModalContributor(type: 'add' | 'edit') {
+    openModalAddContributor() {
         const modal = this.dialog.open(ModalAddEditContributorTypeComponent, {
             width: '22rem',
             height: '16rem',
             data: {
-                type,
+                type : 'add',
                 contributorType: [],
+            },
+            disableClose: true,
+        });
+
+        modal.afterClosed().subscribe((result) => {
+            if (result) {
+                this.getContributorTypes();
+            }
+        });
+    }
+
+    openModalEditContributor(contributorType: ContributorType) {
+        const modal = this.dialog.open(ModalAddEditContributorTypeComponent, {
+            width: '22rem',
+            height: '16rem',
+            data: {
+                type: 'edit',
+                contributorType,
             },
             disableClose: true,
         });
@@ -83,10 +101,8 @@ export class ContributorTypeComponent {
             .getContributorTypes()
             .subscribe({
                 next: (contributorTypes: ContributorType[]) => {
-                    console.log('debugging res-->', contributorTypes);
                     this.loading = false;
                     this.dataSource.data = contributorTypes;
-                    console.log('debugging datasoruce-->', this.dataSource);
                 },
                 error: (err: ApiError) => {
                     this.loading = false;

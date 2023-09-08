@@ -15,11 +15,11 @@ export class EntityService {
         return this.http.get(`${environment.baseUrl_api}/entidad`);
     }
 
-    saveEntity(data: Entity): Observable<any> {
+    saveEntity(data: any): Observable<any> {
         return this.http.post(`${environment.baseUrl_api}/entidad`, data);
     }
 
-    updateEntity(id: number, data: Entity): Observable<any> {
+    updateEntity(id: number, data: any): Observable<any> {
         return this.http.put(`${environment.baseUrl_api}/entidad/` + id, data);
     }
 

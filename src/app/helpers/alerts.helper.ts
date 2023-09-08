@@ -21,7 +21,7 @@ export class alertHelper {
 			horizontalPosition: 'center',
 			verticalPosition: 'top',
 			panelClass: [type],
-			duration: duration
+			duration: duration,
 		});
 	}
 
@@ -36,7 +36,7 @@ export class alertHelper {
 				break;
 
 			case 403:
-				message = 'No cuenta con los permisos para poder realizar esta operación';
+				message = '¡No cuenta con los permisos para poder realizar esta operación';
 				break;
 
 			default:

@@ -1,6 +1,7 @@
 <h2 class="title_modal" mat-dialog-title>
 	{{ data.type === "add" ? "Agregar" : "Editar" }} Tipo de Documento
 </h2>
+<app-loader *ngIf="loading"></app-loader>
 <div class="container_body_form" [formGroup]="form">
 	<mat-form-field appearance="outline">
 		<mat-label>Código:</mat-label>
@@ -17,27 +18,10 @@
 		<input formControlName="descripcion" matInput type="text" class="w-200" />
 	</mat-form-field>
 
-	<!-- <mat-form-field appearance="outline">
-		<mat-label>Estado:</mat-label>
-		<input formControlName="estado" matInput type="text" class="w-100"/>
-	</mat-form-field> -->
-
-	<!-- 
-	<mat-form-field appearance="outline">
-		<mat-label>Placa</mat-label>
-		<mat-select placeholder="Seleccionar placa" formControlName="ID_MOVIL">
-			<app-search-select-custom (textSearch)="filterPlaca($event)" [enableBanner]="listPlacas.length == 0">
-			</app-search-select-custom>
-			<mat-option *ngFor="let s of listPlacas" [value]="s.ID_MOVIL">
-				{{ s.ID_PLACA }}
-			</mat-option>
-		</mat-select>
-	</mat-form-field> -->
-
-	<button mat-flat-button color="primary" (click)="saveDocumentType()" *ngIf="data.type === 'add'">
+	<button mat-flat-button color="primary" [disabled]="!form.valid" (click)="saveDocumentType()" *ngIf="data.type === 'add'">
 		Guardar
 	</button>
-	<button mat-flat-button color="primary" (click)="updateDocumentType()" *ngIf="data.type === 'edit'">
+	<button mat-flat-button color="primary" [disabled]="!form.valid" (click)="updateDocumentType()" *ngIf="data.type === 'edit'">
 		Editar
 	</button>
 	<button mat-flat-button mat-dialog-close>Cerrar</button>
