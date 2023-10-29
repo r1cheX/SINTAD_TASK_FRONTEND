@@ -39,6 +39,7 @@ import { ModalDeleteContributorTypeComponent } from './pages/mantainers/contribu
 import { ModalDeleteDocumentTypeComponent } from './pages/mantainers/document-type/component/modal-delete-document-type/modal-delete-document-type.component';
 import { ModalDeleteEntityComponent } from './pages/mantainers/entity/component/modal-delete-entity/modal-delete-entity.component';
 import { SearchSelectCustomComponent } from './pages/mantainers/component/search-select-custom/search-select-custom.component';
+import { MeilisearchComponent } from './pages/mantainers/component/meilisearch/meilisearch.component';
 
 
 
@@ -63,7 +64,8 @@ import { SearchSelectCustomComponent } from './pages/mantainers/component/search
         ModalDeleteContributorTypeComponent,
         ModalDeleteDocumentTypeComponent,
         ModalDeleteEntityComponent,
-        SearchSelectCustomComponent
+        SearchSelectCustomComponent,
+        MeilisearchComponent,
     ],
     imports: [
         BrowserModule,

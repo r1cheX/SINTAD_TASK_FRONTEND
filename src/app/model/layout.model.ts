@@ -42,4 +42,12 @@ export const navItems: NavItem[] = [
         iconName: 'users',
         route: 'main/contributor-type',
     },
+    {
+        navCap: 'Búsqueda',
+    },
+    {
+        displayName: 'Meilisearch',
+        iconName: 'search',
+        route: 'main/meilisearch',
+    },
 ];

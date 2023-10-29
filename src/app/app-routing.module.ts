@@ -9,6 +9,7 @@ import { AppDashboardComponent } from './pages/dashboard/dashboard.component';
 import { ContributorTypeComponent } from './pages/mantainers/contributor-type/contributor-type.component';
 import { DocumentTypeComponent } from './pages/mantainers/document-type/document-type.component';
 import { EntityComponent } from './pages/mantainers/entity/entity.component';
+import { MeilisearchComponent } from './pages/mantainers/component/meilisearch/meilisearch.component';
 
 const routes: Routes = [
     {
@@ -44,6 +45,11 @@ const routes: Routes = [
                 path: 'contributor-type',
                 canActivate: [AuthGuard],
                 component: ContributorTypeComponent,
+            },
+            {
+                path: 'meilisearch',
+                canActivate: [AuthGuard],
+                component: MeilisearchComponent,
             },
         ],
     },
