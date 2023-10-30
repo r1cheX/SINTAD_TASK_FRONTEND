@@ -46,7 +46,7 @@ export const navItems: NavItem[] = [
         navCap: 'Búsqueda',
     },
     {
-        displayName: 'Meilisearch',
+        displayName: 'Ctrl + K',
         iconName: 'search',
         route: 'main/meilisearch',
     },

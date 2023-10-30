@@ -16,7 +16,7 @@ export class MeilisearchComponent implements OnInit {
     ) { }
   
     ngOnInit(): void {
-      this.getSearchByQuery('xddd');
+      this.getSearchByQuery('a');
     }
 
 
