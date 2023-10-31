@@ -12,12 +12,9 @@ export class MailisearchService {
 
 
 	getMailiSearch(query: string): Observable<any> {
-
-		console.log('debugging llego servicio?-->', );
 		return this.http.get(`${environment.baseUrl_api}/meilisearch/search`,
 			{
 				params: { query }
 			});
-
 	}
 }

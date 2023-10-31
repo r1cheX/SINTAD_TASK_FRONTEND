@@ -34,15 +34,12 @@ export class MeilisearchComponent implements OnInit, OnDestroy, AfterViewInit {
 
 	listenInputSearch(): void {
 
-		console.log('debugging value-->', fromEvent(this.inputElement.nativeElement, 'keyup'));
-
 		this.inputSubscription = fromEvent(this.inputElement.nativeElement, 'keyup')
 			.pipe(
-				tap(() => console.log('debugging llego-->',)),
 				debounceTime(500),
 				map((event: any) => {
 					const value = event.target.value
-					console.log('debugging value-->', value);
+					if (!value) return [];
 					return this.mailisearchService.getMailiSearch(value)
 				}),
 				mergeAll(),

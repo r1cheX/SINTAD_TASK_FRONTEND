@@ -2,8 +2,37 @@
 .container-data {
     border-radius: 5px;
     // background-color: #fff;
-    border: 3px solid rgba(235, 231, 231, 0.993);
+    border: 2px solid #e5eaef;
     padding: 0.2rem;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: -3rem auto; 
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.container-item {
+    display: flex;
+    align-content: center;
+    padding-top: 0.2rem;
+    box-sizing: border-box;
+    width: 100%;
+    // padding: 0.5rem auto;
+}
+
+.container-item:hover {
+    background-color: #f2f4f7;
+    // shadow gray light white
+    border-radius: 5px;
+    border: 2px solid #e5eaef;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #e5eaef;
+    cursor: pointer;
+   
+}
+
+.container-item:hover h3 {
+    color: #74787a;
+    font-weight: 500;
 }
