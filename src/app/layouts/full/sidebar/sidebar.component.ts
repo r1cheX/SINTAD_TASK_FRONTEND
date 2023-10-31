@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit {
 
   openModalGlobalSearch() {
     const modal = this.dialog.open(MeilisearchComponent, {
-      width: '40rem',
+      width: '50rem',
       height: '25.5rem',
       disableClose: false,
     });
