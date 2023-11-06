@@ -12,7 +12,7 @@ import * as actions from 'src/app/store/actions';
 })
 export class MeilisearchComponent implements OnInit, OnDestroy, AfterViewInit {
 
-	loading: boolean = false;
+	// loading: boolean = false;
 	error: any;
 	data: any = [];
 
@@ -31,7 +31,7 @@ export class MeilisearchComponent implements OnInit, OnDestroy, AfterViewInit {
 	ngAfterViewInit(): void {
 		this.store.select('items').subscribe(({ items, loading, error }) => {
 			this.data = items;
-			this.loading = loading;
+			// this.loading = loading;
 			this.error = error;
 		})
 
@@ -48,12 +48,11 @@ export class MeilisearchComponent implements OnInit, OnDestroy, AfterViewInit {
 
 		this.inputSubscription = inputObservable$
 			.pipe(
-				map((event: any) => event.target.value
-				),
+				map((event: any) => event.target.value),
 			)
 			.subscribe((value) => {
 				if (!value) return;
-				this.store.dispatch(actions.cargarItems({ query: value }))
+				this.store.dispatch( actions.cargarItems({ query: value }) )
 			});
 	}
 }
