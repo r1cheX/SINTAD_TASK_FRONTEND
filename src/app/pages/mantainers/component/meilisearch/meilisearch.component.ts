@@ -13,59 +13,47 @@ import * as actions from 'src/app/store/actions';
 export class MeilisearchComponent implements OnInit, OnDestroy, AfterViewInit {
 
 	loading: boolean = false;
+	error: any;
 	data: any = [];
 
 	@ViewChild('input') inputElement: ElementRef;
 	inputSubscription: Subscription;
 
 	constructor(
-		// private mailisearchService: MailisearchService,
 		private store: Store<AppState>,
-		private elementRef: ElementRef,
 	) {
-		this.store.dispatch( actions.isSearchOpened() )
+		this.store.dispatch(actions.isSearchOpened())
 	}
 
 	ngOnInit(): void {
-
 	}
 
 	ngAfterViewInit(): void {
+		this.store.select('items').subscribe(({ items, loading, error }) => {
+			this.data = items;
+			this.loading = loading;
+			this.error = error;
+		})
+
 		this.listenInputSearch();
 	}
 
 	ngOnDestroy(): void {
-		this.store.dispatch( actions.isSearchClosed() )
+		this.store.dispatch(actions.isSearchClosed())
 		this.inputSubscription.unsubscribe();
 	}
 
 	listenInputSearch(): void {
+		const inputObservable$ = fromEvent(this.inputElement.nativeElement, 'keyup')
 
-		this.store.select('items').subscribe( ({ }) => {
-			console.log('items', );
-		})
-
-		// this.inputSubscription = fromEvent(this.inputElement.nativeElement, 'keyup')
-		// 	.pipe(
-		// 		debounceTime(500),
-		// 		map((event: any) => {
-		// 			const value = event.target.value
-		// 			if (!value) return [];
-		// 			return this.mailisearchService.getMailiSearch(value)
-		// 		}),
-		// 		mergeAll(),
-		// 		map((data: any) => data.hits)
-		// 	)
-		// 	.subscribe({
-		// 		next: (data: any) => {
-		// 			this.loading = false;
-		// 			this.data = data;
-		// 			console.log(data);
-		// 		},
-		// 		error: (err: any) => {
-		// 			this.loading = false;
-		// 			console.log(err);
-		// 		}
-		// 	});
+		this.inputSubscription = inputObservable$
+			.pipe(
+				map((event: any) => event.target.value
+				),
+			)
+			.subscribe((value) => {
+				if (!value) return;
+				this.store.dispatch(actions.cargarItems({ query: value }))
+			});
 	}
 }

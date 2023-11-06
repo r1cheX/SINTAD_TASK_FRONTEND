@@ -44,6 +44,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducers } from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { EffectsArray } from './store/effects';
 
 
 
@@ -85,6 +87,8 @@ import { appReducers } from './store/app.reducer';
             maxAge: 25, 
             logOnly: environment.production 
         }),
+        EffectsModule.forRoot( EffectsArray ),
+     
     ],
     exports: [TablerIconsModule],
     bootstrap: [AppComponent],
