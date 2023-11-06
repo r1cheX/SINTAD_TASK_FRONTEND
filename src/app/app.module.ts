@@ -88,7 +88,6 @@ import { EffectsArray } from './store/effects';
             logOnly: environment.production 
         }),
         EffectsModule.forRoot( EffectsArray ),
-     
     ],
     exports: [TablerIconsModule],
     bootstrap: [AppComponent],
