@@ -80,7 +80,7 @@ import { appReducers } from './store/app.reducer';
         ReactiveFormsModule,
         MaterialModule,
         TablerIconsModule.pick(TablerIcons),
-        StoreModule.forRoot( appReducers),
+        StoreModule.forRoot( appReducers ),
         StoreDevtoolsModule.instrument({ 
             maxAge: 25, 
             logOnly: environment.production 
