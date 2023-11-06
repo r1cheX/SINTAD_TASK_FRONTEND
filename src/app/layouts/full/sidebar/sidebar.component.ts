@@ -25,7 +25,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 	) {
 
 		this.uiSubscription = this.store.select('searchUi').subscribe(( { isOpened }) => {
-			console.log('debugging isopen-->', isOpened);
+			console.log('debugging open-->', isOpened);
 			this.isSearchOpened = isOpened;
 		});
 

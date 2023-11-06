@@ -17,21 +17,22 @@ export class MeilisearchComponent implements OnInit, OnDestroy, AfterViewInit {
 	data: any = [];
 
 	@ViewChild('input') inputElement: ElementRef;
+
 	inputSubscription: Subscription;
+	itemSubscription: Subscription;
 
 	constructor(
 		private store: Store<AppState>,
 	) {
-		this.store.dispatch(actions.isSearchOpened())
+		this.store.dispatch( actions.isSearchOpened( ))
 	}
 
 	ngOnInit(): void {
 	}
 
 	ngAfterViewInit(): void {
-		this.store.select('items').subscribe(({ items, loading, error }) => {
+		this.itemSubscription = this.store.select('items').subscribe(({ items, loading, error }) => {
 			this.data = items;
-			// this.loading = loading;
 			this.error = error;
 		})
 
@@ -39,8 +40,9 @@ export class MeilisearchComponent implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	ngOnDestroy(): void {
-		this.store.dispatch(actions.isSearchClosed())
+		this.store.dispatch( actions.isSearchClosed() )
 		this.inputSubscription.unsubscribe();
+		this.itemSubscription.unsubscribe();
 	}
 
 	listenInputSearch(): void {
@@ -50,9 +52,9 @@ export class MeilisearchComponent implements OnInit, OnDestroy, AfterViewInit {
 			.pipe(
 				map((event: any) => event.target.value),
 			)
-			.subscribe((value) => {
-				if (!value) return;
-				this.store.dispatch( actions.cargarItems({ query: value }) )
+			.subscribe((query) => {
+				if (!query) return;
+				this.store.dispatch( actions.cargarItems({ query }) )
 			});
 	}
 }

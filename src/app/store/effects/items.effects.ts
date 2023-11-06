@@ -18,14 +18,10 @@ export class ItemsSearchEffects {
         () => this.action$.pipe(
             ofType( actions.cargarItems ),
             debounceTime(500),
-            tap( ( action ) => console.log('debugging action-->', action) ),
             mergeMap(
                 ( action ) => this.mailisearchService.getMailiSearchByQuery( action.query )
                     .pipe(
-                        map( items => {
-                            console.log('debugging items-->', items);
-                            return actions.cargarItemsSuccess({ items })
-                        }),
+                        map( items =>  actions.cargarItemsSuccess({ items })),
                         catchError( err => of( actions.cargarItemsError({ payload: err }) ) )
                     )
             )
