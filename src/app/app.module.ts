@@ -42,6 +42,8 @@ import { SearchSelectCustomComponent } from './pages/mantainers/component/search
 import { MeilisearchComponent } from './pages/mantainers/component/meilisearch/meilisearch.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { appReducers } from './store/app.reducer';
 
 
 
@@ -78,8 +80,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
         ReactiveFormsModule,
         MaterialModule,
         TablerIconsModule.pick(TablerIcons),
-        StoreModule.forRoot({}, {}),
-        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+        StoreModule.forRoot( appReducers),
+        StoreDevtoolsModule.instrument({ 
+            maxAge: 25, 
+            logOnly: environment.production 
+        }),
     ],
     exports: [TablerIconsModule],
     bootstrap: [AppComponent],
