@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -40,6 +40,8 @@ import { ModalDeleteDocumentTypeComponent } from './pages/mantainers/document-ty
 import { ModalDeleteEntityComponent } from './pages/mantainers/entity/component/modal-delete-entity/modal-delete-entity.component';
 import { SearchSelectCustomComponent } from './pages/mantainers/component/search-select-custom/search-select-custom.component';
 import { MeilisearchComponent } from './pages/mantainers/component/meilisearch/meilisearch.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -76,6 +78,8 @@ import { MeilisearchComponent } from './pages/mantainers/component/meilisearch/m
         ReactiveFormsModule,
         MaterialModule,
         TablerIconsModule.pick(TablerIcons),
+        StoreModule.forRoot({}, {}),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     ],
     exports: [TablerIconsModule],
     bootstrap: [AppComponent],
