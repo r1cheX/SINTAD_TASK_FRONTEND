@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavService } from '../../../services/dashboard/nav.service';
 import { navItems } from 'src/app/model/layout.model';
-import { Subscription, fromEvent } from 'rxjs';
+import { Subscription, filter, fromEvent } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MeilisearchComponent } from 'src/app/pages/mantainers/component/meilisearch/meilisearch.component';
 import { Store } from '@ngrx/store';
@@ -32,14 +32,14 @@ export class SidebarComponent implements OnInit, OnDestroy {
 	 }
 
 	ngOnInit(): void {
-		this.keyBoardEvent$
-		.subscribe((event: any) => {
-			if (this.isSearchOpened) return;
-
-			if (event.ctrlKey && event.key === 'k') {
-				this.openModalGlobalSearch();
-			}
-		});
+		// this.keyBoardEvent$
+		// .pipe(
+		// 	filter((event: any) => event.ctrlKey && event.key === 'k'),
+		// )
+		// .subscribe((event: any) => {
+		// 	if (this.isSearchOpened) return;
+		// 	this.openModalGlobalSearch();
+		// });
 	}
 
 	ngOnDestroy(): void {

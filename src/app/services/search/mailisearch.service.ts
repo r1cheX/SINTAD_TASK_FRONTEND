@@ -15,6 +15,7 @@ export class MailisearchService {
 	getMailiSearchByQuery(query: string): Observable<any> {
 		return this.http.get(`${environment.baseUrl_api}/meilisearch/search/${ query }`)
 			.pipe(
+				tap( ( resp ) => console.log( resp ) ),
 				map<any, any>( resp => resp.hits )
 			)
 	}

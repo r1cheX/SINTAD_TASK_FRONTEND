@@ -42,12 +42,12 @@ export const navItems: NavItem[] = [
         iconName: 'users',
         route: 'main/contributor-type',
     },
-    {
-        navCap: 'Búsqueda',
-    },
-    {
-        displayName: 'Ctrl + K',
-        iconName: 'search',
-        route: 'main/meilisearch',
-    },
+    // {
+    //     navCap: 'Búsqueda',
+    // },
+    // {
+    //     displayName: 'Ctrl + K',
+    //     iconName: 'search',
+    //     route: 'main/meilisearch',
+    // },
 ];
