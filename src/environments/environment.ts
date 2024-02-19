@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl_api: "http://localhost:8080/api-sintad",
+  baseUrl_api: "http://entity-service-2.us-east-1.elasticbeanstalk.com",
+  // "http://localhost:8080/api-sintad",
   secret_key: "sintadTask2023"
 };
 
